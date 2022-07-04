@@ -1,0 +1,2 @@
+# LittleCORS
+CORS Vulnerabilities Exploitation
