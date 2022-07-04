@@ -7,7 +7,7 @@ base_url = input("Input URL:    ")
 base_dir = input("Store Path:   ")
 if not os.path.exists(base_dir):
     os.mkdir(base_dir)
-last_three_chars = base_url[-2:]
+last_two_chars = base_url[-2:]
 
 url = f'http://{base_url}/wp-json/'
 
@@ -39,9 +39,9 @@ for result in results:
     result = result.replace('\\', '');
     result = result[:-1]
     print(result)
-    if result.find(f'{last_three_chars}/') <= 0:
+    if result.find(f'{last_two_chars}/') <= 0:
         continue
-    dir_path = result[result.index(f'{last_three_chars}/')+3:result.rindex('/')]
+    dir_path = result[result.index(f'{last_two_chars}/')+3:result.rindex('/')]
     dir_path = base_dir + "/" + dir_path
     print(dir_path)
     if os.path.isfile(dir_path):
@@ -56,7 +56,7 @@ for result in results:
     #print(result[-1:-1])
     if result[-1:] == '/':
         result += 'backslash.api'
-    file_path = result[result.index(f'{last_three_chars}/')+3:]
+    file_path = result[result.index(f'{last_two_chars}/')+3:]
     file_path = base_dir + "/" + file_path
     if os.path.exists(file_path) and os.path.isdir(file_path):
         file_path += ".txt"
